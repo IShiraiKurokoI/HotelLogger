@@ -9,7 +9,6 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class OperationLog {
     @JsonProperty("time")
     private Date time;

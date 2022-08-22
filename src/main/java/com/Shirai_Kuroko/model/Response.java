@@ -18,7 +18,6 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Response {
     @JsonProperty("ErrCode")
     private int ErrCode;
