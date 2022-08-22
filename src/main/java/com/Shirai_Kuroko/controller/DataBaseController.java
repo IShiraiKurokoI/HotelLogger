@@ -1,11 +1,12 @@
 package com.Shirai_Kuroko.controller;
 
 import com.Shirai_Kuroko.model.OperationLog;
-import com.mysql.jdbc.Driver;
+import com.mysql.cj.jdbc.Driver;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -22,11 +23,12 @@ public class DataBaseController {
 
     public static boolean insert(Connection connection,List<OperationLog> list) throws Exception
     {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Statement statement = connection.createStatement();
-        StringBuilder sql = new StringBuilder("insert insert into log(name,pwd) values");
+        StringBuilder sql = new StringBuilder("insert into log(time,operation) values");
         for (OperationLog operationLog:list)
         {
-            sql.append("('").append(operationLog.getTime()).append("','").append(operationLog.getOperation()).append("'),");
+            sql.append("('").append(format.format(operationLog.getTime())).append("','").append(operationLog.getOperation()).append("'),");
         }
         return statement.execute(sql.substring(0,sql.toString().length()-1)+"");
     }

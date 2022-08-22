@@ -6,6 +6,9 @@ import com.Shirai_Kuroko.model.Response;
 import com.alibaba.fastjson.JSON;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
+import java.util.List;
+
 /**
  * @author Shirai_Kuroko
  * @version 1.0.0
@@ -32,10 +35,14 @@ public class LogController {
     @RequestMapping(value = "/newlog", method = RequestMethod.POST)
     @ResponseBody
     public String write(@RequestBody String Msg) {
+        String PostBody = URLDecoder.decode(Msg);
         try {
-            HotelLogger.GetInstance().insert(JSON.parseArray(Msg, OperationLog.class));
+            List<OperationLog> list = JSON.parseArray(PostBody, OperationLog.class);
+            System.out.println(JSON.toJSONString(list));
+            HotelLogger.GetInstance().insert(list);
             return JSON.toJSONString(new Response(0,"Success",null));
         } catch (Exception e) {
+            System.out.println(e.toString());
             return JSON.toJSONString(new Response(-1,e.toString(),null));
         }
     }
