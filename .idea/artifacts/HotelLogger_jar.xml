@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HotelLogger:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HotelLogger_jar</output-path>
+    <root id="archive" name="HotelLogger.jar">
+      <element id="module-output" name="HotelLogger" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.24/lombok-1.18.24.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
